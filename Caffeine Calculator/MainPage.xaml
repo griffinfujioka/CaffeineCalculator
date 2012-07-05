@@ -1,0 +1,96 @@
+﻿<phone:PhoneApplicationPage 
+    x:Class="Caffeine_Calculator.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="696"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    shell:SystemTray.IsVisible="True">
+
+    <phone:PhoneApplicationPage.Resources>
+
+        <DataTemplate x:Key="DrinkListTemplate">
+            <Grid  HorizontalAlignment="Stretch" Width="420">
+                <StackPanel>
+                    <TextBlock Text="{Binding Path=Name}" FontSize="22" HorizontalAlignment="Left" VerticalAlignment="Center" FontFamily="Arial"/>
+         </StackPanel>
+            </Grid>
+        </DataTemplate>
+
+    </phone:PhoneApplicationPage.Resources>
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.Resources>
+            <DataTemplate x:Name="PickerItemTemplate">
+                <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Name}" FontSize="24" HorizontalAlignment="Left" VerticalAlignment="Center" FontFamily="Arial" />
+                    
+                </StackPanel>
+            </DataTemplate>
+
+            <DataTemplate x:Name="PickerFullModeItemTemplate">
+                <StackPanel Orientation="Horizontal" Margin="8 10 0 20">
+                    <TextBlock Text="{Binding Name}" Margin="8 0 0 0" FontSize="30" />
+                </StackPanel>
+            </DataTemplate>
+
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--TitlePanel contains the name of the application and page title-->
+        <StackPanel x:Name="TitlePanel" Margin="12,17,0,6" Height="61">
+            <TextBlock x:Name="PageTitle" Text="caffeine calculator" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}" FontSize="50" FontFamily="Segoe WP" FontWeight="Normal" />
+        </StackPanel>
+
+        <!--ContentPanel - place additional content here-->
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+            <TextBlock Height="93" HorizontalAlignment="Left" Margin="316,237,0,0" Name="mgTxtBlock" Text="mg" VerticalAlignment="Top" Width="166" FontFamily="Arial" TextAlignment="Center" FontSize="48" Visibility="Visible" />
+            <TextBlock Text="Percentage of daily intake: " Style="{StaticResource PhoneTextNormalStyle}" Margin="12,140,185,444" />
+                <TextBlock Name="percentTxtBlock" Style="{StaticResource PhoneTextNormalStyle}" Margin="271,139,48,442" />
+            
+            <Slider x:Name="defaultSlider" Minimum="0" Maximum="100" Margin="0,153,6,350" />
+           
+            <TextBlock Height="67" HorizontalAlignment="Left" Margin="135,221,0,0" Name="outputTxtBlock" Text="" VerticalAlignment="Top" Width="219" FontFamily="Arial" TextAlignment="Center" FontSize="64" FontWeight="Normal" Visibility="Visible" />
+            <ListBox ItemTemplate="{StaticResource DrinkListTemplate}" ItemsSource="{Binding todayList, Mode=TwoWay}" Height="268" HorizontalAlignment="Left" Margin="6,309,0,0" Name="listBox1" VerticalAlignment="Top" Width="444">
+                
+            </ListBox>
+            
+            <TextBlock Height="51" HorizontalAlignment="Left" Margin="11,237,0,0" Name="textBlock2" Text="Total:" VerticalAlignment="Top" Width="148" FontFamily="Arial" FontSize="48" Visibility="Visible" />
+            <toolkit:ListPicker x:Name="defaultPicker" ItemTemplate="{StaticResource PickerItemTemplate}" FontSize="22" Height="73" SelectionChanged="defaultPicker_SelectionChanged" FullModeItemTemplate="{StaticResource PickerFullModeItemTemplate}" FullModeHeader="Drinks" Margin="5,12,7,527"></toolkit:ListPicker>
+            <TextBlock Height="30" HorizontalAlignment="Left" Margin="12,104,0,0" Name="textBlock1" Text="Maximum daily content: " VerticalAlignment="Top" Width="233" />
+            <TextBlock Height="30" HorizontalAlignment="Left" Margin="236,104,0,0" Name="ddcTxtBlock" Text="" VerticalAlignment="Top" Width="192" />
+        </Grid>
+    </Grid>
+ 
+    
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
+           
+            <shell:ApplicationBarIconButton
+                IconUri="appbar.add.rest.png"
+                Text="add drink"
+                x:Name="newDrinkAppBarButton"
+                Click="newDrinkAppBarButton_Click" />
+         
+            <shell:ApplicationBar.MenuItems>
+                
+                <shell:ApplicationBarMenuItem Text="clear list" Click="ApplicationBarMenuItem_Click"/>
+                <shell:ApplicationBarMenuItem Text="customize caffeine limit" Click="ApplicationBarMenuItem_Click_2" />
+                <shell:ApplicationBarMenuItem Text="about" Click="ApplicationBarMenuItem_Click_1"/>
+                
+            </shell:ApplicationBar.MenuItems>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+
+</phone:PhoneApplicationPage>
