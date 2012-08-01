@@ -97,6 +97,25 @@ namespace Drinks
         }
         #endregion 
 
+        #region isActive
+        // Define completion value: private field, public property, and database column.
+        private bool _isActive;
+
+        [Column]
+        public bool IsActive
+        {
+            get { return _isActive; }
+            set
+            {
+                if (_isActive != value)
+                {
+                    _isActive = value;
+                    NotifyPropertyChanged("IsActive");
+                }
+            }
+        }
+        #endregion 
+
         #region INotifyPropertyChanged Members
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -123,6 +142,7 @@ namespace Drinks
         #endregion
     }
 
+    #region Drink Data Context
     public class DrinkDataContext : DataContext
     {
         public DrinkDataContext(string connectionString)
@@ -130,4 +150,5 @@ namespace Drinks
 
         public Table<Drink> Drinks; 
     }
+#endregion 
 }

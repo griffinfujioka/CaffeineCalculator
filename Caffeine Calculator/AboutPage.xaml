@@ -10,7 +10,7 @@
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
-    mc:Ignorable="d" d:DesignHeight="768" d:DesignWidth="480"
+    mc:Ignorable="d" d:DesignHeight="696" d:DesignWidth="480"
     shell:SystemTray.IsVisible="True">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
@@ -28,31 +28,30 @@
 
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            <TextBlock Height="120" HorizontalAlignment ="Left" Margin="12,6,0,0" Name="textBlock1" Text="This caffeine calculator allows users to calculate
+            <TextBlock Height="156" HorizontalAlignment ="Left" Margin="12,6,0,0" Name="textBlock1" Text="This caffeine calculator stores a local database of caffeinated drinks allowing users to calculate
 how many milligrams of caffeine have been
-consumed and compare against a pre-defined caffeine limit." VerticalAlignment="Top" Width="438" TextWrapping="Wrap" />
+consumed and compare against a customizable caffeine limit." VerticalAlignment="Top" Width="438" TextWrapping="Wrap" />
             <TextBlock Height="30" HorizontalAlignment="Left" Margin="119,557,0,0" Name="textBlock2" Text="Created by: Griffin Fujioka" VerticalAlignment="Top" />
             <TextBlock Height="209" HorizontalAlignment="Left" Margin="6,342,0,0" Name="textBlock3" Text="After adding a drink use the start menu button to 
 put the app in tombstone mode and instead of 
 re-opening it for each new drink, access it by 
 holding the back button on your device to 
 preserve your current list of drinks. " VerticalAlignment="Top" Width="438" TextWrapping="Wrap" />
-            <TextBlock Height="63" HorizontalAlignment="Left" Margin="12,132,0,0" Name="textBlock4" Text="This app was created as a part of Microsoft's
-2:1 campaign. More updates to come!" VerticalAlignment="Top" Width="438" TextWrapping="Wrap" />
+            <TextBlock Height="109" HorizontalAlignment="Left" Margin="9,151,0,0" Name="textBlock4" Text="This app was created as a part of Microsoft's
+2:1 campaign by Griffin Fujioka. Please rate the app and provide feedback using the application bar below! " VerticalAlignment="Top" Width="438" TextWrapping="Wrap" />
             <TextBlock Height="49" HorizontalAlignment="Left" Margin="6,287,0,0" Name="textBlock5" Text="Tips:" VerticalAlignment="Top" Width="274" FontSize="32" FontWeight="Normal" />
         </Grid>
     </Grid>
  
     <!--Sample code showing usage of ApplicationBar-->
-    <!--<phone:PhoneApplicationPage.ApplicationBar>
+    <phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
-            <shell:ApplicationBarIconButton IconUri="/Images/appbar_button1.png" Text="Button 1"/>
-            <shell:ApplicationBarIconButton IconUri="/Images/appbar_button2.png" Text="Button 2"/>
+            
             <shell:ApplicationBar.MenuItems>
-                <shell:ApplicationBarMenuItem Text="MenuItem 1"/>
-                <shell:ApplicationBarMenuItem Text="MenuItem 2"/>
+                <shell:ApplicationBarMenuItem x:Name="RateReviewBtn" Text="Rate and review" Click="RateReviewBtn_Click"/>
+                <shell:ApplicationBarMenuItem x:Name="FeedbackBtn" Text="Feedback/suggestions" Click="FeedbackBtn_Click"/> 
             </shell:ApplicationBar.MenuItems>
         </shell:ApplicationBar>
-    </phone:PhoneApplicationPage.ApplicationBar>-->
+    </phone:PhoneApplicationPage.ApplicationBar>
 
 </phone:PhoneApplicationPage>

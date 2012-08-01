@@ -91,8 +91,17 @@ namespace Caffeine_Calculator
             #endregion 
 
             ddcTxtBlock.Text = caffeineDailyLimit.ToString() + " mg";                   // Print daily limit 
+            bool TapToAdd = false;
+            bool Added = false;
 
-            if (defaultPicker.SelectedIndex != -1 && defaultPicker.SelectedIndex != 0 && defaultPicker.SelectedIndex != 23)        // A drink is selected and it's not the "Select a drink" option
+
+            if ((defaultPicker.SelectedItem as Drink).Name == "Tap to add a drink")
+                return; //  TapToAdd = true;
+
+            if ((defaultPicker.SelectedItem as Drink).Name == "------ Added Drinks ------")
+                Added = true; 
+            
+            if (defaultPicker.SelectedIndex != -1 && !TapToAdd && !Added)        // A drink is selected and it's not the "Select a drink" option
             {
                 #region Make all textblocks visible
                 mgTxtBlock.Visibility = Visibility.Visible;
@@ -196,6 +205,11 @@ namespace Caffeine_Calculator
 
         }
         #endregion 
+
+        private void editDrinksBtn_Click(object sender, EventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/EditDrinksPage.xaml", UriKind.Relative)); 
+        }
 
     }
 

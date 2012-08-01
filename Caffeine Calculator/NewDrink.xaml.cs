@@ -79,8 +79,6 @@ namespace Caffeine_Calculator
         }
         #endregion 
 
-        private void saveDrinkBt_Click(object sender, EventArgs e)
-        {
-        }
+
     }
 }

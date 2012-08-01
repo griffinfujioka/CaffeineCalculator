@@ -55,22 +55,24 @@
 
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            <TextBlock Height="93" HorizontalAlignment="Left" Margin="316,237,0,0" Name="mgTxtBlock" Text="mg" VerticalAlignment="Top" Width="166" FontFamily="Arial" TextAlignment="Center" FontSize="48" Visibility="Visible" />
-            <TextBlock Text="Percentage of daily intake: " Style="{StaticResource PhoneTextNormalStyle}" Margin="12,140,185,444" />
-                <TextBlock Name="percentTxtBlock" Style="{StaticResource PhoneTextNormalStyle}" Margin="271,139,48,442" />
+            <TextBlock Height="93" HorizontalAlignment="Left" Margin="319,226,0,0" Name="mgTxtBlock" Text="mg" VerticalAlignment="Top" Width="166" FontFamily="Arial" TextAlignment="Center" FontSize="48" Visibility="Visible" />
+            <TextBlock Text="Percentage of daily intake: " Style="{StaticResource PhoneTextNormalStyle}" Margin="15,129,182,455" />
+                <TextBlock Name="percentTxtBlock" Style="{StaticResource PhoneTextNormalStyle}" Margin="274,128,45,453" />
             
-            <Slider x:Name="defaultSlider" Minimum="0" Maximum="100" Margin="0,153,6,350" />
+            <Slider x:Name="defaultSlider" Minimum="0" Maximum="100" Margin="3,142,3,361" />
            
-            <TextBlock Height="67" HorizontalAlignment="Left" Margin="135,221,0,0" Name="outputTxtBlock" Text="" VerticalAlignment="Top" Width="219" FontFamily="Arial" TextAlignment="Center" FontSize="64" FontWeight="Normal" Visibility="Visible" />
-            <ListBox ItemTemplate="{StaticResource DrinkListTemplate}" ItemsSource="{Binding todayList, Mode=TwoWay}" Height="268" HorizontalAlignment="Left" Margin="6,309,0,0" Name="listBox1" VerticalAlignment="Top" Width="444">
+            <TextBlock Height="67" HorizontalAlignment="Left" Margin="138,210,0,0" Name="outputTxtBlock" Text="" VerticalAlignment="Top" Width="219" FontFamily="Arial" TextAlignment="Center" FontSize="64" FontWeight="Normal" Visibility="Visible" />
+            <ListBox ItemTemplate="{StaticResource DrinkListTemplate}" ItemsSource="{Binding todayList, Mode=TwoWay}" Height="308" HorizontalAlignment="Left" Margin="9,298,0,0" Name="listBox1" VerticalAlignment="Top" Width="444">
                 
             </ListBox>
             
-            <TextBlock Height="51" HorizontalAlignment="Left" Margin="11,237,0,0" Name="textBlock2" Text="Total:" VerticalAlignment="Top" Width="148" FontFamily="Arial" FontSize="48" Visibility="Visible" />
-            <toolkit:ListPicker x:Name="defaultPicker" ItemTemplate="{StaticResource PickerItemTemplate}" FontSize="22" Height="73" SelectionChanged="defaultPicker_SelectionChanged" FullModeItemTemplate="{StaticResource PickerFullModeItemTemplate}" FullModeHeader="Drinks" Margin="5,12,7,527"></toolkit:ListPicker>
-            <TextBlock Height="30" HorizontalAlignment="Left" Margin="12,104,0,0" Name="textBlock1" Text="Maximum daily content: " VerticalAlignment="Top" Width="233" />
-            <TextBlock Height="30" HorizontalAlignment="Left" Margin="236,104,0,0" Name="ddcTxtBlock" Text="" VerticalAlignment="Top" Width="192" />
+            <TextBlock Height="51" HorizontalAlignment="Left" Margin="14,226,0,0" Name="textBlock2" Text="Total:" VerticalAlignment="Top" Width="148" FontFamily="Arial" FontSize="48" Visibility="Visible" />
+            <toolkit:ListPicker x:Name="defaultPicker" ItemTemplate="{StaticResource PickerItemTemplate}" FontSize="22" Height="73" SelectionChanged="defaultPicker_SelectionChanged" FullModeItemTemplate="{StaticResource PickerFullModeItemTemplate}" FullModeHeader="Drinks" Margin="5,12,0,527" HorizontalAlignment="Left" Width="322"></toolkit:ListPicker>
+            <TextBlock Height="30" HorizontalAlignment="Left" Margin="15,93,0,0" Name="textBlock1" Text="Maximum daily content: " VerticalAlignment="Top" Width="233" />
+            <TextBlock Height="30" HorizontalAlignment="Left" Margin="239,93,0,0" Name="ddcTxtBlock" Text="" VerticalAlignment="Top" Width="192" />
+            <Button Content="Clear " Height="76" HorizontalAlignment="Left" Margin="319,8,0,0" Name="button1" VerticalAlignment="Top" Width="142" Click="ApplicationBarMenuItem_Click" />
         </Grid>
+            
     </Grid>
  
     
@@ -81,11 +83,13 @@
                 IconUri="appbar.add.rest.png"
                 Text="add drink"
                 x:Name="newDrinkAppBarButton"
-                Click="newDrinkAppBarButton_Click" />
+                Click="newDrinkAppBarButton_Click" /> 
          
             <shell:ApplicationBar.MenuItems>
                 
-                <shell:ApplicationBarMenuItem Text="clear list" Click="ApplicationBarMenuItem_Click"/>
+                
+                <!--<shell:ApplicationBarMenuItem Text="clear calulator" Click="ApplicationBarMenuItem_Click"/>-->
+                <shell:ApplicationBarMenuItem x:Name="editDrinksBtn" Text="edit drink list" Click="editDrinksBtn_Click"/> 
                 <shell:ApplicationBarMenuItem Text="customize caffeine limit" Click="ApplicationBarMenuItem_Click_2" />
                 <shell:ApplicationBarMenuItem Text="about" Click="ApplicationBarMenuItem_Click_1"/>
                 

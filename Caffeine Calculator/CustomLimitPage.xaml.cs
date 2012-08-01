@@ -36,10 +36,10 @@ namespace Caffeine_Calculator
         public void initializeToleranceList()
         {
           
-            toleranceList.Add(new Tolerance() { LevelName="Low", Content = 250});           // Low: 250 mg
-            toleranceList.Add(new Tolerance() { LevelName = "Medium", Content = 500 });     // Medium: 500 mg 
-            toleranceList.Add(new Tolerance() { LevelName = "High", Content = 750 });       // High: 750 mg 
-            toleranceList.Add(new Tolerance() { LevelName = "Very High", Content = 1000 }); // Very High: 1000 mg 
+            toleranceList.Add(new Tolerance() { LevelName="Low - 250 mg", Content = 250});           // Low: 250 mg
+            toleranceList.Add(new Tolerance() { LevelName = "Medium - 500 mg", Content = 500 });     // Medium: 500 mg 
+            toleranceList.Add(new Tolerance() { LevelName = "High - 750 mg", Content = 750 });       // High: 750 mg 
+            toleranceList.Add(new Tolerance() { LevelName = "Very High - 1000 mg", Content = 1000 }); // Very High: 1000 mg 
         }
         #endregion 
 

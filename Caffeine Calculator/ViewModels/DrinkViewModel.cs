@@ -70,12 +70,21 @@ namespace Caffeine_Calculator
             DrinkDB.SubmitChanges();
  
             // Add to the drink list 
-            drinkList.Add(newDrink);
-
+            //drinkList.Add(newDrink);
+            drinkList.Insert(1, newDrink); 
             App.ViewModel.SaveChangesToDB(); 
 
         }
 
+
+        public void DeleteDrink(Drink drink)
+        {
+            drinkList.Remove(drink);
+
+            DrinkDB.Drinks.DeleteOnSubmit(drink);
+
+            DrinkDB.SubmitChanges(); 
+        }
         public void DeleteWish()
         {
             var drinkForDelete = new Drink();  ; // = this.SelectedDrink
@@ -90,35 +99,39 @@ namespace Caffeine_Calculator
             DrinkDB.SubmitChanges(); 
         }
 
+        public void UpdateTolerance(int newTolerance)
+        {
+
+        }
         public void PopulateDrinkDB()
         {
             List<Drink> originalDrinkList = new List<Drink>(); 
             if (!GlobalVars.DBHasBeenPopulated)
             {
-                originalDrinkList.Add(new Drink() { Name = "Tap to add a drink", Size = 0, mg = 0 });
-                originalDrinkList.Add(new Drink() { Name = "5 hour energy", Size = 2, mg = 138 });
-                originalDrinkList.Add(new Drink() { Name = "Coca Cola classic - 12oz", Size = 12, mg = 34 });
-                originalDrinkList.Add(new Drink() { Name = "Coca Cola zero - 12oz", Size = 12, mg = 45 });
-                originalDrinkList.Add(new Drink() { Name = "Coca Cola diet - 12oz", Size = 12, mg = 45 });
-                originalDrinkList.Add(new Drink() { Name = "Coffee - 8oz", Size = 8, mg = 108 });
-                originalDrinkList.Add(new Drink() { Name = "Coffee - 12oz", Size = 12, mg = 108 });
-                originalDrinkList.Add(new Drink() { Name = "Crystal Light Energy - 16oz", Size = 16, mg = 120 });
-                originalDrinkList.Add(new Drink() { Name = "Full Throttle Energy Drink - 16oz", Size = 16, mg = 144 });
-                originalDrinkList.Add(new Drink() { Name = "Lipton Iced Tea - 20oz", Size = 20, mg = 50 });
-                originalDrinkList.Add(new Drink() { Name = "McDonalds Iced Coffee", Size = 16, mg = 200 });
-                originalDrinkList.Add(new Drink() { Name = "Monster Energy Drink", Size = 16, mg = 160 });
-                originalDrinkList.Add(new Drink() { Name = "Mountain Dew - 12oz", Size = 12, mg = 54 });
-                originalDrinkList.Add(new Drink() { Name = "Muscle Milk Refuel 3oz", Size = 16, mg = 160 });
-                originalDrinkList.Add(new Drink() { Name = "No Fear Energy Drink", Size = 16, mg = 182 });
-                originalDrinkList.Add(new Drink() { Name = "NOS Energy Drink", Size = 16, mg = 260 });
-                originalDrinkList.Add(new Drink() { Name = "Pepsi Cola - 12oz", Size = 12, mg = 38 });
-                originalDrinkList.Add(new Drink() { Name = "Red Bull - 8.4oz", Size = 9, mg = 80 });
-                originalDrinkList.Add(new Drink() { Name = "Rockstar Energy Drink", Size = 16, mg = 160 });
-                originalDrinkList.Add(new Drink() { Name = "Starbucks Bottled Frappucino", Size = 9, mg = 90 });
-                originalDrinkList.Add(new Drink() { Name = "Starbucks Grande Americano", Size = 16, mg = 225 });
-                originalDrinkList.Add(new Drink() { Name = "Starbucks Grande Latte", Size = 16, mg = 150 });
-                originalDrinkList.Add(new Drink() { Name = "Tazo Chai (tea) - 8oz", Size = 8, mg = 45 });
-                originalDrinkList.Add(new Drink() { Name = "------ Added Drinks ------", Size = 0, mg = 0 });
+                originalDrinkList.Add(new Drink() { Name = "Tap to add a drink", Size = 0, mg = 0, IsActive=true});
+                originalDrinkList.Add(new Drink() { Name = "5 hour energy", Size = 2, mg = 138, IsActive = true });
+                originalDrinkList.Add(new Drink() { Name = "Coca Cola classic - 12oz", Size = 12, mg = 34, IsActive = true });
+                originalDrinkList.Add(new Drink() { Name = "Coca Cola zero - 12oz", Size = 12, mg = 45, IsActive = true });
+                originalDrinkList.Add(new Drink() { Name = "Coca Cola diet - 12oz", Size = 12, mg = 45, IsActive = true });
+                originalDrinkList.Add(new Drink() { Name = "Coffee - 8oz", Size = 8, mg = 108, IsActive = true });
+                originalDrinkList.Add(new Drink() { Name = "Coffee - 12oz", Size = 12, mg = 108, IsActive = true });
+                originalDrinkList.Add(new Drink() { Name = "Crystal Light Energy - 16oz", Size = 16, mg = 120, IsActive = true });
+                originalDrinkList.Add(new Drink() { Name = "Full Throttle Energy Drink - 16oz", Size = 16, mg = 144, IsActive = true });
+                originalDrinkList.Add(new Drink() { Name = "Lipton Iced Tea - 20oz", Size = 20, mg = 50, IsActive = true });
+                originalDrinkList.Add(new Drink() { Name = "McDonalds Iced Coffee", Size = 16, mg = 200, IsActive = true });
+                originalDrinkList.Add(new Drink() { Name = "Monster Energy Drink", Size = 16, mg = 160, IsActive = true });
+                originalDrinkList.Add(new Drink() { Name = "Mountain Dew - 12oz", Size = 12, mg = 54, IsActive = true });
+                originalDrinkList.Add(new Drink() { Name = "Muscle Milk Refuel 3oz", Size = 16, mg = 160, IsActive = true });
+                originalDrinkList.Add(new Drink() { Name = "No Fear Energy Drink", Size = 16, mg = 182, IsActive = true });
+                originalDrinkList.Add(new Drink() { Name = "NOS Energy Drink", Size = 16, mg = 260, IsActive = true });
+                originalDrinkList.Add(new Drink() { Name = "Pepsi Cola - 12oz", Size = 12, mg = 38, IsActive = true });
+                originalDrinkList.Add(new Drink() { Name = "Red Bull - 8.4oz", Size = 9, mg = 80, IsActive = true });
+                originalDrinkList.Add(new Drink() { Name = "Rockstar Energy Drink", Size = 16, mg = 160, IsActive = true });
+                originalDrinkList.Add(new Drink() { Name = "Starbucks Bottled Frappucino", Size = 9, mg = 90, IsActive = true });
+                originalDrinkList.Add(new Drink() { Name = "Starbucks Grande Americano", Size = 16, mg = 225, IsActive = true });
+                originalDrinkList.Add(new Drink() { Name = "Starbucks Grande Latte", Size = 16, mg = 150, IsActive = true });
+                originalDrinkList.Add(new Drink() { Name = "Tazo Chai (tea) - 8oz", Size = 8, mg = 45, IsActive = true });
+                //originalDrinkList.Add(new Drink() { Name = "------ Added Drinks ------", Size = 0, mg = 0, IsActive = true });
 
                 foreach (Drink drink in originalDrinkList)
                 {
